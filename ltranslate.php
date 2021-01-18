@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: LTranslate
+Plugin Name: Language Translate
 Plugin URI:
-Description: Allows your website <strong>multilingual</strong> and available to the world using LTranslate.
+Description: Allows website vistors to translate to their preferred language using LTranslate.
 Version: 1.0
 Author: Kezang Yeshi
 Author URI:
@@ -1006,13 +1006,13 @@ EOT;
                             <select id="floating_language_selector" name="floating_language_selector">
                                 <option value="no"><?php _e('No', 'LTranslate'); ?></option>
                                 <option value="top_left"><?php _e('Top left', 'LTranslate'); ?></option>
-                                <option value="top_left_sticky"><?php _e('Top left (no-scroll)', 'LTranslate'); ?></option>
+                                <!-- <option value="top_left_sticky"><?php _e('Top left (no-scroll)', 'LTranslate'); ?></option> -->
                                 <option value="top_right"><?php _e('Top right', 'LTranslate'); ?></option>
-                                <option value="top_right_sticky"><?php _e('Top right (no-scroll)', 'LTranslate'); ?></option>
+                                <!-- <option value="top_right_sticky"><?php _e('Top right (no-scroll)', 'LTranslate'); ?></option> -->
                                 <option value="bottom_left"><?php _e('Bottom left', 'LTranslate'); ?></option>
-                                <option value="bottom_left_sticky"><?php _e('Bottom left (no-scroll)', 'LTranslate'); ?></option>
+                                <!-- <option value="bottom_left_sticky"><?php _e('Bottom left (no-scroll)', 'LTranslate'); ?></option> -->
                                 <option value="bottom_right"><?php _e('Bottom right', 'LTranslate'); ?></option>
-                                <option value="bottom_right_sticky"><?php _e('Bottom right (no-scroll)', 'LTranslate'); ?></option>
+                                <!-- <option value="bottom_right_sticky"><?php _e('Bottom right (no-scroll)', 'LTranslate'); ?></option> -->
                             </select>
                         </td>
                     </tr>
@@ -1028,7 +1028,7 @@ EOT;
                         </td>
                     </tr>
                     <tr id="flag_languages_option" style="display:none;">
-                        <td class="option_name" colspan="2"><div><?php _e('Flag languages', 'LTranslate'); ?>: <a onclick="jQuery('.connectedSortable1 input').attr('checked', true);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Check All', 'LTranslate'); ?></a> | <a onclick="jQuery('.connectedSortable1 input').attr('checked', false);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Uncheck All', 'LTranslate'); ?></a></div><br/>
+                        <td class="option_name" colspan="2"><div><?php _e('Select languages', 'LTranslate'); ?>: <a onclick="jQuery('.connectedSortable1 input').attr('checked', true);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Check All', 'LTranslate'); ?></a> | <a onclick="jQuery('.connectedSortable1 input').attr('checked', false);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Uncheck All', 'LTranslate'); ?></a></div><br/>
                         <div>
                         <?php $gt_lang_codes = explode(',', $language_codes); ?>
                         <?php for($i = 0; $i < count($gt_lang_array) / 26; $i++): ?>
@@ -1083,11 +1083,11 @@ EOT;
         </div>
 
         <input type="hidden" name="switcher_text_color" id="switcher_text_color_hidden" value="<?php echo $switcher_text_color; ?>" />
-        <input type="hidden" name="switcher_arrow_color" id="switcher_arrow_color_hidden" value="<?php echo $switcher_arrow_color; ?>" />
+        <!-- <input type="hidden" name="switcher_arrow_color" id="switcher_arrow_color_hidden" value="<?php echo $switcher_arrow_color; ?>" /> -->
         <input type="hidden" name="switcher_border_color" id="switcher_border_color_hidden" value="<?php echo $switcher_border_color; ?>" />
         <input type="hidden" name="switcher_background_color" id="switcher_background_color_hidden" value="<?php echo $switcher_background_color; ?>" />
-        <input type="hidden" name="switcher_background_shadow_color" id="switcher_background_shadow_color_hidden" value="<?php echo $switcher_background_shadow_color; ?>" />
-        <input type="hidden" name="switcher_background_hover_color" id="switcher_background_hover_color_hidden" value="<?php echo $switcher_background_hover_color; ?>" />
+        <!-- <input type="hidden" name="switcher_background_shadow_color" id="switcher_background_shadow_color_hidden" value="<?php echo $switcher_background_shadow_color; ?>" /> -->
+        <!-- <input type="hidden" name="switcher_background_hover_color" id="switcher_background_hover_color_hidden" value="<?php echo $switcher_background_hover_color; ?>" /> -->
         <input type="hidden" name="dropdown_text_color" id="dropdown_text_color_hidden" value="<?php echo $dropdown_text_color; ?>" />
         <input type="hidden" name="dropdown_hover_color" id="dropdown_hover_color_hidden" value="<?php echo $dropdown_hover_color; ?>" />
         <input type="hidden" name="dropdown_background_color" id="dropdown_background_color_hidden" value="<?php echo $dropdown_background_color; ?>" />
@@ -1128,6 +1128,10 @@ EOT;
                             <tr>
                                 <td class="option_name"><?php _e('Switcher text color', 'LTranslate'); ?>:</td>
                                 <td><input type="text" name="switcher_text_color" id="switcher_text_color" class="color-field" value="#666" data-default-color="#666" /></td>
+                            </tr>
+                            <tr>
+                                <td class="option_name"><?php _e('Switcher border color', 'gtranslate'); ?>:</td>
+                                <td><input type="text" name="switcher_border_color" id="switcher_border_color" class="color-field" value="#ccc" data-default-color="#ccc" /></td>
                             </tr>
 
                             <tr>
@@ -1178,7 +1182,6 @@ EOT;
         .connectedSortable1 li label, .connectedSortable2 li label {cursor:move;}
         </style>
 
-        <script>window.intercomSettings = {app_id: "r70azrgx", 'platform': 'wordpress', 'translate_from': '<?php echo $default_language; ?>', 'is_sub_directory': <?php echo (empty($pro_version) ? '0' : '1'); ?>, 'is_sub_domain': <?php echo (empty($enterprise_version) ? '0' : '1'); ?>};(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/r70azrgx';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
 
         <?php
     }
@@ -1217,7 +1220,7 @@ EOT;
         $data['switcher_border_color'] = isset($_POST['switcher_border_color']) ? $_POST['switcher_border_color'] : '#ccc';
         $data['switcher_background_color'] = isset($_POST['switcher_background_color']) ? $_POST['switcher_background_color'] : '#fff';
         $data['switcher_background_shadow_color'] = isset($_POST['switcher_background_shadow_color']) ? $_POST['switcher_background_shadow_color'] : '#efefef';
-        $data['switcher_background_hover_color'] = isset($_POST['switcher_background_color']) ? $_POST['switcher_background_hover_color'] : '#f0f0f0';
+        // $data['switcher_background_hover_color'] = isset($_POST['switcher_background_color']) ? $_POST['switcher_background_hover_color'] : '#f0f0f0';
         $data['dropdown_text_color'] = isset($_POST['dropdown_text_color']) ? $_POST['dropdown_text_color'] : '#000';
         $data['dropdown_hover_color'] = isset($_POST['dropdown_hover_color']) ? $_POST['dropdown_hover_color'] : '#fff'; // #ffc
         $data['dropdown_background_color'] = isset($_POST['dropdown_background_color']) ? $_POST['dropdown_background_color'] : '#eee';
@@ -1328,7 +1331,7 @@ EOT;
 class LTranslateWidget extends WP_Widget {
 
     function __construct() {
-        parent::__construct('LTranslate', esc_html__('LTranslate', 'LTranslate'), array('description' => esc_html__('LTranslate language switcher', 'LTranslate')));
+        parent::__construct('LTranslate', esc_html__('LTranslate', 'LTranslate'), array('description' => esc_html__('LTranslate language', 'LTranslate')));
     }
 
     public function widget($args, $instance) {
@@ -1618,18 +1621,8 @@ class LTranslate_Notices {
             }
         }
 
-        /*
-        $one_week_support = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'one_week_support')));
 
-        $notices['one_week_support'] = array(
-          'title' => __('Hey! How is it going?', 'LTranslate'),
-          'msg' => __('Thank you for using LTranslate! We hope that you have found everything you need, but if you have any questions you can use our Live Chat or Forum:', 'LTranslate'),
-          'link' => '<li><span class="dashicons dashicons-admin-comments"></span><a target="_blank" href="https://LTranslate.io/#contact">' . __('Get help', 'LTranslate') . '</a></li>' .
-                    '<li><span class="dashicons dashicons-format-video"></span><a target="_blank" href="https://LTranslate.io/videos">'.__('Check videos', 'LTranslate') . '</a></li>' .
-                    '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $one_week_support . '">' . __('Never show again', 'LTranslate') . '</a></li>',
-          'int' => 1
-        );
-        */
+
 
         $two_week_review_ignore = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'two_week_review')));
         $two_week_review_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'two_week_review', 'gt_int' => 6)));
@@ -2128,9 +2121,6 @@ if($data['pro_version'] or $data['enterprise_version']) {
         return $false;
     }
 
-    //add_action('wp_print_scripts', 'LTranslate_filter_l10n_scripts', 1);
-    //add_action('wp_print_header_scripts', 'LTranslate_filter_l10n_scripts', 1);
-    //add_action('wp_print_footer_scripts', 'LTranslate_filter_l10n_scripts', 1);
 
     add_filter('script_loader_tag', 'LTranslate_add_script_attributes', 100, 2);
 
