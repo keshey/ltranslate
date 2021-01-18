@@ -221,7 +221,7 @@ class LTranslate extends WP_Widget {
         ?>
         <div class="wrap">
         <div id="icon-options-general" class="icon32"><br/></div>
-        <h2><img src="<?php echo plugins_url('gt_logo.svg', __FILE__); ?>" border="0" title="<?php _e('LTranslate - your window to the world', 'LTranslate'); ?>" alt="G|translate" height="70"></h2>
+        <h2>LTranslate</h2>
         <?php
         if(isset($_POST['save']) and $_POST['save'])
             LTranslate::control_options();
@@ -235,13 +235,6 @@ class LTranslate extends WP_Widget {
         wp_enqueue_style( 'wp-color-picker');
         wp_add_inline_script('wp-color-picker', 'jQuery(document).ready(function($) {$(".color-field").wpColorPicker({change:function(e,c){$("#"+e.target.getAttribute("id")+"_hidden").val(c.color.toString());e.target.value = c.color.toString();RefreshDoWidgetCode();}});});');
 
-        /* code editor for widget_code textarea
-        if(function_exists('wp_enqueue_code_editor')) {
-            $editor_settings = wp_enqueue_code_editor(array('type' => 'text/html'));
-            if($editor_settings !== false)
-                wp_add_inline_script('code-editor', sprintf('jQuery(function() {wp.codeEditor.initialize("widget_code", %s);});', wp_json_encode($editor_settings)));
-        }
-        */
 
         $site_url = site_url();
         $wp_plugin_url = preg_replace('/^https?:/i', '', plugins_url() . '/LTranslate');
@@ -980,16 +973,10 @@ EOT;
                         <td class="option_name"><?php _e('Widget look', 'LTranslate'); ?>:</td>
                         <td>
                             <select id="widget_look" name="widget_look" onChange="RefreshDoWidgetCode()">
-                                <option value="dropdown_with_flags"><?php _e('Nice dropdown with flags', 'LTranslate'); ?></option>
+                                <option value="dropdown_with_flags"><?php _e('Dropdown with flags', 'LTranslate'); ?></option>
                                 <option value="flags_dropdown"><?php _e('Flags and dropdown', 'LTranslate'); ?></option>
                                 <option value="dropdown"><?php _e('Dropdown', 'LTranslate'); ?></option>
-                                <option value="flags"><?php _e('Flags', 'LTranslate'); ?></option>
-                                <option value="flags_name"><?php _e('Flags with language name', 'LTranslate'); ?></option>
-                                <option value="flags_code"><?php _e('Flags with language code', 'LTranslate'); ?></option>
-                                <option value="lang_names"><?php _e('Language names', 'LTranslate'); ?></option>
-                                <option value="lang_codes"><?php _e('Language codes', 'LTranslate'); ?></option>
-                                <option value="globe"><?php _e('Globe', 'LTranslate'); ?></option>
-                                <option value="popup">(beta) <?php _e('Popup', 'LTranslate'); ?></option>
+                                <option value="popup"><?php _e('Popup', 'LTranslate'); ?></option>
                             </select>
                         </td>
                     </tr>
@@ -997,148 +984,9 @@ EOT;
                         <td class="option_name"><?php _e('Translate from', 'LTranslate'); ?>:</td>
                         <td>
                             <select id="default_language" name="default_language" onChange="RefreshDoWidgetCode()">
-                                <option value="af"><?php _e('Afrikaans', 'LTranslate'); ?></option>
-                                <option value="sq"><?php _e('Albanian', 'LTranslate'); ?></option>
-                                <option value="am"><?php _e('Amharic', 'LTranslate'); ?></option>
-                                <option value="ar"><?php _e('Arabic', 'LTranslate'); ?></option>
-                                <option value="hy"><?php _e('Armenian', 'LTranslate'); ?></option>
-                                <option value="az"><?php _e('Azerbaijani', 'LTranslate'); ?></option>
-                                <option value="eu"><?php _e('Basque', 'LTranslate'); ?></option>
-                                <option value="be"><?php _e('Belarusian', 'LTranslate'); ?></option>
-                                <option value="bn"><?php _e('Bengali', 'LTranslate'); ?></option>
-                                <option value="bs"><?php _e('Bosnian', 'LTranslate'); ?></option>
-                                <option value="bg"><?php _e('Bulgarian', 'LTranslate'); ?></option>
-                                <option value="ca"><?php _e('Catalan', 'LTranslate'); ?></option>
-                                <option value="ceb"><?php _e('Cebuano', 'LTranslate'); ?></option>
-                                <option value="ny"><?php _e('Chichewa', 'LTranslate'); ?></option>
-                                <option value="zh-CN"><?php _e('Chinese (Simplified)', 'LTranslate'); ?></option>
-                                <option value="zh-TW"><?php _e('Chinese (Traditional)', 'LTranslate'); ?></option>
-                                <option value="co"><?php _e('Corsican', 'LTranslate'); ?></option>
-                                <option value="hr"><?php _e('Croatian', 'LTranslate'); ?></option>
-                                <option value="cs"><?php _e('Czech', 'LTranslate'); ?></option>
-                                <option value="da"><?php _e('Danish', 'LTranslate'); ?></option>
-                                <option value="nl"><?php _e('Dutch', 'LTranslate'); ?></option>
                                 <option value="en" selected="selected"><?php _e('English', 'LTranslate'); ?></option>
-                                <option value="eo"><?php _e('Esperanto', 'LTranslate'); ?></option>
-                                <option value="et"><?php _e('Estonian', 'LTranslate'); ?></option>
-                                <option value="tl"><?php _e('Filipino', 'LTranslate'); ?></option>
-                                <option value="fi"><?php _e('Finnish', 'LTranslate'); ?></option>
-                                <option value="fr"><?php _e('French', 'LTranslate'); ?></option>
-                                <option value="fy"><?php _e('Frisian', 'LTranslate'); ?></option>
-                                <option value="gl"><?php _e('Galician', 'LTranslate'); ?></option>
-                                <option value="ka"><?php _e('Georgian', 'LTranslate'); ?></option>
-                                <option value="de"><?php _e('German', 'LTranslate'); ?></option>
-                                <option value="el"><?php _e('Greek', 'LTranslate'); ?></option>
-                                <option value="gu"><?php _e('Gujarati', 'LTranslate'); ?></option>
-                                <option value="ht"><?php _e('Haitian Creole', 'LTranslate'); ?></option>
-                                <option value="ha"><?php _e('Hausa', 'LTranslate'); ?></option>
-                                <option value="haw"><?php _e('Hawaiian', 'LTranslate'); ?></option>
-                                <option value="iw"><?php _e('Hebrew', 'LTranslate'); ?></option>
-                                <option value="hi"><?php _e('Hindi', 'LTranslate'); ?></option>
-                                <option value="hmn"><?php _e('Hmong', 'LTranslate'); ?></option>
-                                <option value="hu"><?php _e('Hungarian', 'LTranslate'); ?></option>
-                                <option value="is"><?php _e('Icelandic', 'LTranslate'); ?></option>
-                                <option value="ig"><?php _e('Igbo', 'LTranslate'); ?></option>
-                                <option value="id"><?php _e('Indonesian', 'LTranslate'); ?></option>
-                                <option value="ga"><?php _e('Irish', 'LTranslate'); ?></option>
-                                <option value="it"><?php _e('Italian', 'LTranslate'); ?></option>
-                                <option value="ja"><?php _e('Japanese', 'LTranslate'); ?></option>
-                                <option value="jw"><?php _e('Javanese', 'LTranslate'); ?></option>
-                                <option value="kn"><?php _e('Kannada', 'LTranslate'); ?></option>
-                                <option value="kk"><?php _e('Kazakh', 'LTranslate'); ?></option>
-                                <option value="km"><?php _e('Khmer', 'LTranslate'); ?></option>
-                                <option value="ko"><?php _e('Korean', 'LTranslate'); ?></option>
-                                <option value="ku"><?php _e('Kurdish (Kurmanji)', 'LTranslate'); ?></option>
-                                <option value="ky"><?php _e('Kyrgyz', 'LTranslate'); ?></option>
-                                <option value="lo"><?php _e('Lao', 'LTranslate'); ?></option>
-                                <option value="la"><?php _e('Latin', 'LTranslate'); ?></option>
-                                <option value="lv"><?php _e('Latvian', 'LTranslate'); ?></option>
-                                <option value="lt"><?php _e('Lithuanian', 'LTranslate'); ?></option>
-                                <option value="lb"><?php _e('Luxembourgish', 'LTranslate'); ?></option>
-                                <option value="mk"><?php _e('Macedonian', 'LTranslate'); ?></option>
-                                <option value="mg"><?php _e('Malagasy', 'LTranslate'); ?></option>
-                                <option value="ms"><?php _e('Malay', 'LTranslate'); ?></option>
-                                <option value="ml"><?php _e('Malayalam', 'LTranslate'); ?></option>
-                                <option value="mt"><?php _e('Maltese', 'LTranslate'); ?></option>
-                                <option value="mi"><?php _e('Maori', 'LTranslate'); ?></option>
-                                <option value="mr"><?php _e('Marathi', 'LTranslate'); ?></option>
-                                <option value="mn"><?php _e('Mongolian', 'LTranslate'); ?></option>
-                                <option value="my"><?php _e('Myanmar (Burmese)', 'LTranslate'); ?></option>
-                                <option value="ne"><?php _e('Nepali', 'LTranslate'); ?></option>
-                                <option value="no"><?php _e('Norwegian', 'LTranslate'); ?></option>
-                                <option value="ps"><?php _e('Pashto', 'LTranslate'); ?></option>
-                                <option value="fa"><?php _e('Persian', 'LTranslate'); ?></option>
-                                <option value="pl"><?php _e('Polish', 'LTranslate'); ?></option>
-                                <option value="pt"><?php _e('Portuguese', 'LTranslate'); ?></option>
-                                <option value="pa"><?php _e('Punjabi', 'LTranslate'); ?></option>
-                                <option value="ro"><?php _e('Romanian', 'LTranslate'); ?></option>
-                                <option value="ru"><?php _e('Russian', 'LTranslate'); ?></option>
-                                <option value="sm"><?php _e('Samoan', 'LTranslate'); ?></option>
-                                <option value="gd"><?php _e('Scottish Gaelic', 'LTranslate'); ?></option>
-                                <option value="sr"><?php _e('Serbian', 'LTranslate'); ?></option>
-                                <option value="st"><?php _e('Sesotho', 'LTranslate'); ?></option>
-                                <option value="sn"><?php _e('Shona', 'LTranslate'); ?></option>
-                                <option value="sd"><?php _e('Sindhi', 'LTranslate'); ?></option>
-                                <option value="si"><?php _e('Sinhala', 'LTranslate'); ?></option>
-                                <option value="sk"><?php _e('Slovak', 'LTranslate'); ?></option>
-                                <option value="sl"><?php _e('Slovenian', 'LTranslate'); ?></option>
-                                <option value="so"><?php _e('Somali', 'LTranslate'); ?></option>
-                                <option value="es"><?php _e('Spanish', 'LTranslate'); ?></option>
-                                <option value="su"><?php _e('Sudanese', 'LTranslate'); ?></option>
-                                <option value="sw"><?php _e('Swahili', 'LTranslate'); ?></option>
-                                <option value="sv"><?php _e('Swedish', 'LTranslate'); ?></option>
-                                <option value="tg"><?php _e('Tajik', 'LTranslate'); ?></option>
-                                <option value="ta"><?php _e('Tamil', 'LTranslate'); ?></option>
-                                <option value="te"><?php _e('Telugu', 'LTranslate'); ?></option>
-                                <option value="th"><?php _e('Thai', 'LTranslate'); ?></option>
-                                <option value="tr"><?php _e('Turkish', 'LTranslate'); ?></option>
-                                <option value="uk"><?php _e('Ukrainian', 'LTranslate'); ?></option>
-                                <option value="ur"><?php _e('Urdu', 'LTranslate'); ?></option>
-                                <option value="uz"><?php _e('Uzbek', 'LTranslate'); ?></option>
-                                <option value="vi"><?php _e('Vietnamese', 'LTranslate'); ?></option>
-                                <option value="cy"><?php _e('Welsh', 'LTranslate'); ?></option>
-                                <option value="xh"><?php _e('Xhosa', 'LTranslate'); ?></option>
-                                <option value="yi"><?php _e('Yiddish', 'LTranslate'); ?></option>
-                                <option value="yo"><?php _e('Yoruba', 'LTranslate'); ?></option>
-                                <option value="zu"><?php _e('Zulu', 'LTranslate'); ?></option>
                             </select>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="option_name">* <?php _e('Sub-directory URL structure', 'LTranslate'); ?>:<br><code><small>http://example.com/<b>ru</b>/</small></code></td>
-                        <td><input id="pro_version" name="pro_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#enterprise_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://LTranslate.io/?xyz=998#pricing" target="_blank" title="If you already have a subscription, you can enable this.">* <?php _e('for paid plans only', 'LTranslate'); ?></a></td>
-                    </tr>
-                    <tr>
-                        <td class="option_name">* <?php _e('Sub-domain URL structure', 'LTranslate'); ?>:<br><code><small>http://<b>es</b>.example.com/</small></code></td>
-                        <td><input id="enterprise_version" name="enterprise_version" value="1" type="checkbox" onclick="if(jQuery('#pro_version').is(':checked') && jQuery('#enterprise_version').is(':checked'))jQuery('#pro_version').prop('checked', false);RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/> <a href="https://LTranslate.io/?xyz=998#pricing" target="_blank" title="If you already have a subscription, you can enable this.">* <?php _e('for paid plans only', 'LTranslate'); ?></a></td>
-                    </tr>
-                    <tr id="url_translation_option" style="display:none;">
-                        <td class="option_name"><?php _e('Enable URL Translation', 'LTranslate'); ?>:</td>
-                        <td><input id="url_translation" name="url_translation" value="1" type="checkbox"/></td>
-                    </tr>
-                    <tr id="hreflang_tags_option" style="display:none;">
-                        <td class="option_name"><?php _e('Add hreflang tags', 'LTranslate'); ?>:</td>
-                        <td><input id="add_hreflang_tags" name="add_hreflang_tags" value="1" type="checkbox"/></td>
-                    </tr>
-                    <tr id="email_translation_option" style="display:none;">
-                        <td class="option_name"><?php _e('Enable WooCommerce Email Translation', 'LTranslate'); ?>:</td>
-                        <td><input id="email_translation" name="email_translation" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr>
-                    <tr id="email_translation_debug_option" style="display:none;">
-                        <td class="option_name"><?php _e('Debug Email Translation', 'LTranslate'); ?>:</td>
-                        <td><input id="email_translation_debug" name="email_translation_debug" value="1" type="checkbox"/></td>
-                    </tr>
-                    <tr id="new_window_option" style="display:none;">
-                        <td class="option_name"><?php _e('Open in new window', 'LTranslate'); ?>:</td>
-                        <td><input id="new_window" name="new_window" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr>
-                    <tr>
-                        <td class="option_name"><?php _e('Analytics', 'LTranslate'); ?>:</td>
-                        <td><input id="analytics" name="analytics" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr>
-                    <tr id="auto_switch_option">
-                        <td class="option_name"><?php _e('Auto switch to browser language', 'LTranslate'); ?>:</td>
-                        <td><input id="detect_browser_language" name="detect_browser_language" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
                     </tr>
                     <tr>
                         <td class="option_name"><?php _e('Show in menu', 'LTranslate'); ?>:</td>
@@ -1168,10 +1016,6 @@ EOT;
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="option_name"><?php _e('Show native language names', 'LTranslate'); ?>:</td>
-                        <td><input id="native_language_names" name="native_language_names" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr>
                     <tr id="flag_size_option">
                         <td class="option_name"><?php _e('Flag size', 'LTranslate'); ?>:</td>
                         <td>
@@ -1183,12 +1027,8 @@ EOT;
                         </select>
                         </td>
                     </tr>
-                    <tr id="flag_monochrome_option">
-                        <td class="option_name"><?php _e('Monochrome flags', 'LTranslate'); ?>:</td>
-                        <td><input id="monochrome_flags" name="monochrome_flags" value="1" type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
-                    </tr>
                     <tr id="flag_languages_option" style="display:none;">
-                        <td class="option_name" colspan="2"><div><?php _e('Flag languages', 'LTranslate'); ?>: <a onclick="jQuery('.connectedSortable1 input').attr('checked', true);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Check All', 'LTranslate'); ?></a> | <a onclick="jQuery('.connectedSortable1 input').attr('checked', false);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Uncheck All', 'LTranslate'); ?></a> <span style="float:right;"><b>HINT</b>: To reorder the languages simply drag and drop them in the list below.</span></div><br />
+                        <td class="option_name" colspan="2"><div><?php _e('Flag languages', 'LTranslate'); ?>: <a onclick="jQuery('.connectedSortable1 input').attr('checked', true);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Check All', 'LTranslate'); ?></a> | <a onclick="jQuery('.connectedSortable1 input').attr('checked', false);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Uncheck All', 'LTranslate'); ?></a></div><br/>
                         <div>
                         <?php $gt_lang_codes = explode(',', $language_codes); ?>
                         <?php for($i = 0; $i < count($gt_lang_array) / 26; $i++): ?>
@@ -1201,17 +1041,6 @@ EOT;
                         </ul>
                         <?php endfor; ?>
                         </div>
-                        </td>
-                    </tr>
-                    <tr id="alternative_flags_option" style="display:none;">
-                        <td class="option_name" colspan="2"><?php _e('Alternative flags', 'LTranslate'); ?>:<br /><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="alt_us" name="alt_flags[]" value="us"><label for="alt_us"><?php _e('USA flag', 'LTranslate'); ?> (<?php _e('English', 'LTranslate'); ?>)</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="alt_ca" name="alt_flags[]" value="ca"><label for="alt_ca"><?php _e('Canada flag', 'LTranslate'); ?> (<?php _e('English', 'LTranslate'); ?>)</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="alt_br" name="alt_flags[]" value="br"><label for="alt_br"><?php _e('Brazil flag', 'LTranslate'); ?> (<?php _e('Portuguese', 'LTranslate'); ?>)</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="alt_mx" name="alt_flags[]" value="mx"><label for="alt_mx"><?php _e('Mexico flag', 'LTranslate'); ?> (<?php _e('Spanish', 'LTranslate'); ?>)</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="alt_ar" name="alt_flags[]" value="ar"><label for="alt_ar"><?php _e('Argentina flag', 'LTranslate'); ?> (<?php _e('Spanish', 'LTranslate'); ?>)</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="alt_co" name="alt_flags[]" value="co"><label for="alt_co"><?php _e('Colombia flag', 'LTranslate'); ?> (<?php _e('Spanish', 'LTranslate'); ?>)</label><br />
-                        <input type="checkbox" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()" id="alt_qc" name="alt_flags[]" value="qc"><label for="alt_qc"><?php _e('Quebec flag', 'LTranslate'); ?> (<?php _e('French', 'LTranslate'); ?>)</label><br />
                         </td>
                     </tr>
                     <tr id="line_break_option" style="display:none;">
@@ -1241,12 +1070,12 @@ EOT;
 
         <div id="poststuff">
             <div class="postbox">
-                <h3 id="settings"><?php _e('Widget code (for advanced users)', 'LTranslate'); ?></h3>
+                <h3 id="settings"><?php _e('Additional Information', 'LTranslate'); ?></h3>
                 <div class="inside">
-                    <p><?php _e('This area is for advanced users ONLY who know HTML/CSS/Javascript and do not want to use "Show floating language selector" option.', 'LTranslate'); ?></p>
-                    <?php _e('You can edit this if you wish', 'LTranslate'); ?>:<br />
+                    <!-- <p><?php _e('This area is for advanced users ONLY who know HTML/CSS/Javascript and do not want to use "Show floating language selector" option.', 'LTranslate'); ?></p>
+                    <?php _e('You can edit this if you wish', 'LTranslate'); ?>:<br /> -->
                     <textarea id="widget_code" name="widget_code" onchange="ShowWidgetPreview(this.value)" style="font-family:Monospace;font-size:11px;height:150px;width:565px;"><?php echo $widget_code; ?></textarea><br />
-                    <a href="#" onclick="RefreshDoWidgetCode();return false;"><?php _e('Reset code to default'); ?></a><br /><br />
+                    <!-- <a href="#" onclick="RefreshDoWidgetCode();return false;"><?php _e('Reset code to default'); ?></a><br /><br /> -->
                     <span style="color:red;"><?php _e('DO NOT COPY THIS INTO YOUR POSTS OR PAGES! Use [LTranslate] shortcode inside the post/page <br />or add a LTranslate widget into your sidebar from Appearance -> Widgets instead.', 'LTranslate'); ?></span><br /><br />
                     <?php _e('You can also use <code>&lt;?php echo do_shortcode(\'[LTranslate]\'); ?&gt;</code> in your template header/footer files.', 'LTranslate'); ?>
                 </div>
@@ -1263,15 +1092,10 @@ EOT;
         <input type="hidden" name="dropdown_hover_color" id="dropdown_hover_color_hidden" value="<?php echo $dropdown_hover_color; ?>" />
         <input type="hidden" name="dropdown_background_color" id="dropdown_background_color_hidden" value="<?php echo $dropdown_background_color; ?>" />
 
-        <input type="hidden" id="language_codes_order" name="language_codes" value="<?php echo $language_codes; ?>" />
-        <input type="hidden" id="language_codes_order2" name="language_codes2" value="<?php echo $language_codes2; ?>" />
         <?php wp_nonce_field('LTranslate-save'); ?>
 
-        <p><label for="use_encoding" title="Turn this on if you are not able to Save Changes, this will help.">I have issues saving</label> <input type="checkbox" id="use_encoding" name="use_encoding" value="1" /></p>
 
         <p class="submit"><input type="submit" class="button-primary" name="save" value="<?php _e('Save Changes'); ?>" /></p>
-
-        <p style="margin-top:-10px;"><a target="_blank" href="https://wordpress.org/support/plugin/LTranslate/reviews/?filter=5"><?php _e('Love LTranslate? Give us 5 stars on WordPress.org :)', 'LTranslate'); ?></a></p>
 
         </div>
 
@@ -1298,34 +1122,18 @@ EOT;
 
             <div id="poststuff" class="switcher_color_options">
                 <div class="postbox">
-                    <h3 id="settings"><?php _e('Color options', 'LTranslate'); ?> ( <a href="#" onclick="return light_color_scheme()">light</a> | <a href="#" onclick="return dark_color_scheme()">dark</a> )</h3>
+                    <h3 id="settings"><?php _e('Additional options', 'LTranslate'); ?> </h3>
                     <div class="inside">
                         <table style="width:100%;" cellpadding="0">
                             <tr>
                                 <td class="option_name"><?php _e('Switcher text color', 'LTranslate'); ?>:</td>
                                 <td><input type="text" name="switcher_text_color" id="switcher_text_color" class="color-field" value="#666" data-default-color="#666" /></td>
                             </tr>
-                            <tr>
-                                <td class="option_name"><?php _e('Switcher arrow color', 'LTranslate'); ?>:</td>
-                                <td><input type="text" name="switcher_arrow_color" id="switcher_arrow_color" class="color-field" value="#666" data-default-color="#666" /></td>
-                            </tr>
-                            <tr>
-                                <td class="option_name"><?php _e('Switcher border color', 'LTranslate'); ?>:</td>
-                                <td><input type="text" name="switcher_border_color" id="switcher_border_color" class="color-field" value="#ccc" data-default-color="#ccc" /></td>
-                            </tr>
+
                             <tr>
                                 <td class="option_name"><?php _e('Switcher background color', 'LTranslate'); ?>:</td>
                                 <td><input type="text" name="switcher_background_color" id="switcher_background_color" class="color-field" value="#fff" data-default-color="#fff" /></td>
                             </tr>
-                            <tr>
-                                <td class="option_name"><?php _e('Switcher background shadow color', 'LTranslate'); ?>:</td>
-                                <td><input type="text" name="switcher_background_shadow_color" id="switcher_background_shadow_color" class="color-field" value="#fff" data-default-color="#efefef" /></td>
-                            </tr>
-                            <tr>
-                                <td class="option_name"><?php _e('Switcher background hover color', 'LTranslate'); ?>:</td>
-                                <td><input type="text" name="switcher_background_hover_color" id="switcher_background_hover_color" class="color-field" value="#f0f0f0" data-default-color="#f0f0f0" /></td>
-                            </tr>
-
                             <tr>
                                 <td class="option_name"><?php _e('Dropdown text color', 'LTranslate'); ?>:</td>
                                 <td><input type="text" name="dropdown_text_color" id="dropdown_text_color" class="color-field" value="#000" data-default-color="#000" /></td>
@@ -1343,104 +1151,6 @@ EOT;
                 </div>
             </div>
 
-            <div id="poststuff">
-                <div class="postbox">
-                    <h3 id="settings"><?php _e('Paid version advantages', 'LTranslate'); ?></h3>
-                    <div class="inside">
-                        <ul style="list-style-type:square;padding-left:20px;">
-                            <li style="margin:0;"><?php _e('Search engine indexing', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Search engine friendly (SEF) URLs', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Human level neural translations', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Edit translations manually', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><a href="https://LTranslate.io/website-translation-quote" title="Website Translation Price Calculator" target="_blank"><?php _e('Automatic translation post-editing service and professional translations', 'LTranslate'); ?></a></li>
-                            <li style="margin:0;"><?php _e('Meta data translation (keywords, page description, etc...)', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('URL/slug translation', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Language hosting (custom domain like example.fr, example.es)', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Seamless updates', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Increased international traffic and AdSense revenue', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Works in China', 'LTranslate'); ?></li>
-                            <li style="margin:0;"><?php _e('Priority Live Chat support', 'LTranslate'); ?></li>
-                        </ul>
-
-                        <p><?php _e('Prices starting from <b>$7.99/month</b>!', 'LTranslate'); ?></p>
-
-                        <a href="https://LTranslate.io/?xyz=998#pricing" target="_blank" class="button-primary"><?php _e('Try Now (15 days free)', 'LTranslate'); ?></a> <a href="https://LTranslate.io/?xyz=998#faq" target="_blank" class="button-primary"><?php _e('FAQ', 'LTranslate'); ?></a> <a href="https://LTranslate.io/website-translation-quote" target="_blank" class="button-primary"><?php _e('Website Translation Quote', 'LTranslate'); ?></a> <a href="https://LTranslate.io/?xyz=998#contact" target="_blank" class="button-primary"><?php _e('Live Chat', 'LTranslate'); ?></a>
-                    </div>
-                </div>
-            </div>
-
-            <div id="poststuff">
-                <div class="postbox">
-                    <h3 id="settings"><?php _e('Do you like LTranslate?', 'LTranslate'); ?></h3>
-                    <div class="inside">
-                        <p><?php _e('Give us 5 stars on', 'LTranslate'); ?> <a href="https://wordpress.org/support/plugin/LTranslate/reviews/?filter=5">WordPress.org</a> :)</p>
-
-                        <div id="fb-root"></div>
-                        <script>(function(d, s, id) {
-                          var js, fjs = d.getElementsByTagName(s)[0];
-                          if (d.getElementById(id)) return;
-                          js = d.createElement(s); js.id = id;
-                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=231165476898475";
-                          fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));</script>
-
-                        <div class="fb-page" data-href="https://www.facebook.com/LTranslate" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/LTranslate" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LTranslate">LTranslate</a></blockquote></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="poststuff">
-                <div class="postbox">
-                    <h3 id="settings"><?php _e('Useful links', 'LTranslate'); ?></h3>
-                    <div class="inside">
-                        <style>
-                        ul.useful_links_list {list-style-type:square;padding-left:20px;margin:0;}
-                        ul.useful_links_list li {margin:0;}
-                        ul.useful_links_list li a {text-decoration:none;}
-                        </style>
-                        <table style="width:100%;" cellpadding="4">
-                            <tr>
-                                <td>
-                                    <ul class="useful_links_list">
-                                        <li><a href="https://LTranslate.io/videos" target="_blank"><?php _e('Videos', 'LTranslate'); ?></a></li>
-                                        <li><a href="https://docs.LTranslate.io/how-tos" target="_blank"><?php _e('How-tos', 'LTranslate'); ?></a></li>
-                                        <li><a href="https://LTranslate.io/blog" target="_blank"><?php _e('Blog', 'LTranslate'); ?></a></li>
-                                        <li><a href="https://LTranslate.io/about-us" target="_blank"><?php _e('About LTranslate team', 'LTranslate'); ?></a></li>
-                                        <li><a href="https://LTranslate.io/?xyz=998#faq" target="_blank"><?php _e('FAQ', 'LTranslate'); ?></a></li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul class="useful_links_list">
-                                        <li><a href="https://my.LTranslate.io/" target="_blank"><?php _e('User dashboard', 'LTranslate'); ?></a></li>
-                                        <li><a href="https://LTranslate.io/?xyz=998#pricing" target="_blank"><?php _e('Compare plans', 'LTranslate'); ?></a></li>
-                                        <li><a href="https://LTranslate.io/website-translation-quote" target="_blank"><?php _e('Website Translation Quote', 'LTranslate'); ?></a></li>
-                                        <li><a href="https://wordpress.org/support/plugin/LTranslate/reviews/" target="_blank"><?php _e('Reviews', 'LTranslate'); ?></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div id="poststuff">
-                <div class="postbox">
-                    <h3 id="settings"><?php _e('LTranslate Tour Video', 'LTranslate'); ?></h3>
-                    <div class="inside">
-                        <iframe width="480" height="270" src="https://www.youtube.com/embed/R4mfiKGZh_g" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div id="poststuff">
-                <div class="postbox">
-                    <h3 id="settings"><?php _e('Live Chat', 'LTranslate'); ?></h3>
-                    <div class="inside">
-                        <p>9am - 6pm (Mon - Fri) New York Time</p>
-                        <p><?php _e('We are here to make your experience with LTranslate more convenient.'); ?></p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <script><?php echo $script; ?></script>
@@ -1796,7 +1506,7 @@ class LTranslate_Notices {
                 }
 
                 if ($output_css) {
-                    wp_enqueue_style($this->prefix . '-admin-notices', plugins_url(plugin_basename(dirname(__FILE__))) . '/LTranslate-notices.css', array());
+                    wp_enqueue_style($this->prefix . '-admin-notices', plugins_url(plugin_basename(dirname(__FILE__))) . '/GTranslate-notices.css', array());
                 }
             }
 
