@@ -966,11 +966,11 @@ EOT;
 
         <div id="poststuff">
             <div class="postbox">
-                <h3 id="settings"><?php _e('Widget options', 'LTranslate'); ?></h3>
+                <h3 id="settings"><?php _e('Settings options', 'LTranslate'); ?></h3>
                 <div class="inside">
                     <table style="width:100%;" cellpadding="4">
                     <tr>
-                        <td class="option_name"><?php _e('Widget look', 'LTranslate'); ?>:</td>
+                        <td class="option_name"><?php _e('Dropdown Options', 'LTranslate'); ?>:</td>
                         <td>
                             <select id="widget_look" name="widget_look" onChange="RefreshDoWidgetCode()">
                                 <option value="dropdown_with_flags"><?php _e('Dropdown with flags', 'LTranslate'); ?></option>
@@ -981,43 +981,28 @@ EOT;
                         </td>
                     </tr>
                     <tr>
-                        <td class="option_name"><?php _e('Translate from', 'LTranslate'); ?>:</td>
+                        <td class="option_name"><?php _e('Translate From', 'LTranslate'); ?>:</td>
                         <td>
                             <select id="default_language" name="default_language" onChange="RefreshDoWidgetCode()">
                                 <option value="en" selected="selected"><?php _e('English', 'LTranslate'); ?></option>
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="option_name"><?php _e('Show in menu', 'LTranslate'); ?>:</td>
-                        <td>
-                            <select id="show_in_menu" name="show_in_menu">
-                                <option value="" selected> - <?php _e('None', 'LTranslate'); ?> - </option>
-                                <?php $menus = get_registered_nav_menus(); ?>
-                                <?php foreach($menus as $location => $description): ?>
-                                <option value="<?php echo $location; ?>"><?php echo $description; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </td>
-                    </tr>
+
                     <tr id="floating_option">
-                        <td class="option_name"><?php _e('Show floating language selector', 'LTranslate'); ?>:</td>
+                        <td class="option_name"><?php _e('Position Language Selector', 'LTranslate'); ?>:</td>
                         <td>
                             <select id="floating_language_selector" name="floating_language_selector">
                                 <option value="no"><?php _e('No', 'LTranslate'); ?></option>
                                 <option value="top_left"><?php _e('Top left', 'LTranslate'); ?></option>
-                                <!-- <option value="top_left_sticky"><?php _e('Top left (no-scroll)', 'LTranslate'); ?></option> -->
                                 <option value="top_right"><?php _e('Top right', 'LTranslate'); ?></option>
-                                <!-- <option value="top_right_sticky"><?php _e('Top right (no-scroll)', 'LTranslate'); ?></option> -->
                                 <option value="bottom_left"><?php _e('Bottom left', 'LTranslate'); ?></option>
-                                <!-- <option value="bottom_left_sticky"><?php _e('Bottom left (no-scroll)', 'LTranslate'); ?></option> -->
                                 <option value="bottom_right"><?php _e('Bottom right', 'LTranslate'); ?></option>
-                                <!-- <option value="bottom_right_sticky"><?php _e('Bottom right (no-scroll)', 'LTranslate'); ?></option> -->
                             </select>
                         </td>
                     </tr>
                     <tr id="flag_size_option">
-                        <td class="option_name"><?php _e('Flag size', 'LTranslate'); ?>:</td>
+                        <td class="option_name"><?php _e('Select Flag Size', 'LTranslate'); ?>:</td>
                         <td>
                         <select id="flag_size"  name="flag_size" onchange="RefreshDoWidgetCode()">
                             <option value="16" selected>16px</option>
@@ -1028,7 +1013,7 @@ EOT;
                         </td>
                     </tr>
                     <tr id="flag_languages_option" style="display:none;">
-                        <td class="option_name" colspan="2"><div><?php _e('Select languages', 'LTranslate'); ?>: <a onclick="jQuery('.connectedSortable1 input').attr('checked', true);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Check All', 'LTranslate'); ?></a> | <a onclick="jQuery('.connectedSortable1 input').attr('checked', false);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Uncheck All', 'LTranslate'); ?></a></div><br/>
+                        <td class="option_name" colspan="2"><div><?php _e('Select Languages', 'LTranslate'); ?>: <a onclick="jQuery('.connectedSortable1 input').attr('checked', true);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Check All', 'LTranslate'); ?></a> | <a onclick="jQuery('.connectedSortable1 input').attr('checked', false);RefreshDoWidgetCode()" style="cursor:pointer;text-decoration:underline;"><?php _e('Uncheck All', 'LTranslate'); ?></a></div><br/>
                         <div>
                         <?php $gt_lang_codes = explode(',', $language_codes); ?>
                         <?php for($i = 0; $i < count($gt_lang_array) / 26; $i++): ?>
@@ -1624,19 +1609,19 @@ class LTranslate_Notices {
 
 
 
-        $two_week_review_ignore = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'two_week_review')));
-        $two_week_review_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'two_week_review', 'gt_int' => 6)));
+        // $two_week_review_ignore = esc_url(add_query_arg(array($this->prefix . '_admin_notice_ignore' => 'two_week_review')));
+        // $two_week_review_temp = esc_url(add_query_arg(array($this->prefix . '_admin_notice_temp_ignore' => 'two_week_review', 'gt_int' => 6)));
 
-        $notices['two_week_review'] = array(
-            'title' => __('Please Leave a Review', 'LTranslate'),
-            'msg' => __("We hope you have enjoyed using LTranslate! Would you mind taking a few minutes to write a review on WordPress.org? <br>Just writing a simple <b>'thank you'</b> will make us happy!", 'LTranslate'),
-            'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://wordpress.org/support/plugin/LTranslate/reviews/?filter=5" target="_blank">' . __('Sure! I would love to!', 'LTranslate') . '</a></li>' .
-                      '<li><span class="dashicons dashicons-smiley"></span><a href="' . $two_week_review_ignore . '">' . __('I have already left a review', 'LTranslate') . '</a></li>' .
-                      '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $two_week_review_temp . '">' . __('Maybe later', 'LTranslate') . '</a></li>' .
-                      '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $two_week_review_ignore . '">' . __('Never show again', 'LTranslate') . '</a></li>',
-            'later_link' => $two_week_review_temp,
-            'int' => 5
-        );
+        // $notices['two_week_review'] = array(
+        //     'title' => __('Please Leave a Review', 'LTranslate'),
+        //     'msg' => __("We hope you have enjoyed using LTranslate! Would you mind taking a few minutes to write a review on WordPress.org? <br>Just writing a simple <b>'thank you'</b> will make us happy!", 'LTranslate'),
+        //     'link' => '<li><span class="dashicons dashicons-external"></span><a href="https://wordpress.org/support/plugin/LTranslate/reviews/?filter=5" target="_blank">' . __('Sure! I would love to!', 'LTranslate') . '</a></li>' .
+        //               '<li><span class="dashicons dashicons-smiley"></span><a href="' . $two_week_review_ignore . '">' . __('I have already left a review', 'LTranslate') . '</a></li>' .
+        //               '<li><span class="dashicons dashicons-calendar-alt"></span><a href="' . $two_week_review_temp . '">' . __('Maybe later', 'LTranslate') . '</a></li>' .
+        //               '<li><span class="dashicons dashicons-dismiss"></span><a href="' . $two_week_review_ignore . '">' . __('Never show again', 'LTranslate') . '</a></li>',
+        //     'later_link' => $two_week_review_temp,
+        //     'int' => 5
+        // );
 
         $data = get_option('LTranslate');
         LTranslate::load_defaults($data);
