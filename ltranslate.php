@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Language Translate
-Plugin URI:
+Plugin URI:https://github.com/keshey/ltranslate
 Description: Allows website vistors to translate to their preferred language using LTranslate.
 Version: 1.0
 Author: Kezang Yeshi
-Author URI:
+Author URI: www.linkedin.com/in/kezang-yeshi-9468b065
 Text Domain: ltranslate
 
 */
